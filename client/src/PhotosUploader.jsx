@@ -21,11 +21,16 @@ export default function PhotosUploader({addedPhotos,onChange}) {
     axios.post('/upload', data, {
       headers: {'Content-type':'multipart/form-data'}
     }).then(response => {
+      console.log("Upload response:", response);  // New log statement
       const {data:filenames} = response;
       onChange(prev => {
+        const newImages = [...prev, ...filenames]; // new
+        console.log("New images state:", newImages);  // New log statement
         return [...prev, ...filenames];
       });
-    })
+    }).catch(error => { //new
+      console.log("Upload error:", error);  // New log statement
+    });//new
   }
   function removePhoto(ev,filename) {
     ev.preventDefault();
