@@ -13,6 +13,7 @@ export default function PhotosUploader({addedPhotos,onChange}) {
     setPhotoLink('');
   }
   function uploadPhoto(ev) {
+    console.log("uploadPhoto function called.");  // New log statement
     const files = ev.target.files;
     const data = new FormData();
     for (let i = 0; i < files.length; i++) {
